@@ -19,11 +19,39 @@
     <script src="/__manus__/debug-collector.js" defer></script>
   </head>
 
+  <script>
+  window.addEventListener("load", () => {
+    const textos = document.body.innerText;
+
+    // Sobre → primeira grande seção de texto
+    const sobreAnchor = document.getElementById("sobre");
+    const primeiraSecao = document.querySelector("h1, h2");
+    if (primeiraSecao && sobreAnchor) {
+      primeiraSecao.parentNode.insertBefore(sobreAnchor, primeiraSecao);
+    }
+
+    // Abordagens → segunda grande seção (ajuste se necessário)
+    const abordagensAnchor = document.getElementById("abordagens");
+    const secoes = document.querySelectorAll("h2, h3");
+    if (secoes.length > 1 && abordagensAnchor) {
+      secoes[1].parentNode.insertBefore(abordagensAnchor, secoes[1]);
+    }
+  });
+</script>
+
   <body>
 
-  <!-- Âncoras para links do rodapé -->
-  <div id="sobre"></div>
-  <div id="abordagens"></div>
+  <style>
+  .anchor {
+    position: relative;
+    top: -120px; /* ajusta conforme o tamanho do header */
+    visibility: hidden;
+  }
+</style>
+
+    <div id="sobre" class="anchor"></div>
+<div id="abordagens" class="anchor"></div>
+
 
   <script id="manus-runtime"></script>
   ...
