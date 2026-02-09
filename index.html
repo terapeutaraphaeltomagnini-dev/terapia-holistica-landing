@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <title>Raphael Tomagnini - Terapia Holística Online | Acolhimento para Ansiedade</title>
+    <meta name="description" content="Espaço seguro de escuta e transformação emocional. Atendimento terapêutico holístico online para ansiedade, exclusão e sobrecarga emocional. Sem julgamentos, apenas acolhimento." />
+    <meta name="keywords" content="terapia holística, ansiedade, acolhimento emocional, terapeuta online, saúde mental" />
+    <meta property="og:title" content="Raphael Tomagnini - Terapia Holística Online" />
+    <meta property="og:description" content="Você não precisa carregar isso sozinho(a). Aqui você é ouvido(a)." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/assets/images/hero-therapy-calm.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary: #a8d5ba;
+            --primary-foreground: #ffffff;
+            --background: #faf9f7;
+            --foreground: #3a3a3a;
+            --card: #ffffff;
+            --muted-foreground: #7a7a7a;
+            --secondary: #e8dcc8;
+            --border: #e0d5c7;
+            --accent: #8fa3b8;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--foreground);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        h1 { font-size: 2.25rem; line-height: 1.2; }
+        h2 { font-size: 1.875rem; line-height: 1.3; }
+        h3 { font-size: 1.25rem; }
+
+        p { line-height: 1.7; margin-bottom: 1rem; }
+
+        a { color: inherit; text-decoration: none; }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .container { padding: 0 1.5rem; }
+        }
+
+        @media (min-width: 1024px) {
+            .container { padding: 0 2rem; }
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: rgba(250, 249, 247, 0.95);
+            backdrop-filter: blur(4px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+        }
+
+        .header-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .heart-icon {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .header-subtitle {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+            display: none;
+        }
+
+        @media (min-width: 640px) {
+            .header-subtitle { display: block; }
+        }
+
+        /* ===== MAIN ===== */
+        main {
+            flex: 1;
+        }
+
+        section {
+            padding: 3rem 0;
+        }
+
+        @media (min-width: 768px) {
+            section { padding: 4rem 0; }
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .hero-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+            }
+        }
+
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .hero-title {
+            font-size: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .hero-title { font-size: 2.5rem; }
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .hero-image {
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .hero-image { display: block; }
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn-cta {
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            border: none;
+            display: inline-block;
+            transition: all 0.3s ease-out;
+            font-size: 1rem;
+        }
+
+        .btn-cta:hover {
+            filter: brightness(0.95);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-full {
+            width: 100%;
+        }
+
+        @media (min-width: 640px) {
+            .btn-full { width: auto; }
+        }
+
+        /* ===== CARDS GRID ===== */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .cards-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (min-width: 1024px) {
+            .cards-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        .card {
+            background-color: var(--card);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-text {
+            color: var(--muted-foreground);
+            font-size: 0.95rem;
+        }
+
+        /* ===== SECTION STYLES ===== */
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--muted-foreground);
+        }
+
+        .bg-secondary {
+            background-color: rgba(232, 220, 200, 0.2);
+        }
+
+        .bg-accent-light {
+            background-color: rgba(143, 163, 184, 0.05);
+        }
+
+        /* ===== STEPS GRID ===== */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .steps-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (min-width: 1024px) {
+            .steps-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        .step-card {
+            background-color: var(--card);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .step-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .step-title {
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .step-text {
+            color: var(--muted-foreground);
+            font-size: 0.95rem;
+        }
+
+        /* ===== APPROACHES GRID ===== */
+        .approaches-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .approaches-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .approach-card {
+            background-color: var(--card);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--border);
+        }
+
+        .approach-card h3 {
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .approach-card p {
+            color: var(--muted-foreground);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about-content {
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+
+        .about-seal {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .about-seal img {
+            width: 8rem;
+            height: 8rem;
+            object-fit: contain;
+        }
+
+        .about-text {
+            font-size: 1.125rem;
+            color: var(--foreground);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .formations-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .formations-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .formation-card {
+            background-color: var(--card);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--border);
+        }
+
+        .formation-card h3 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .formation-card ul {
+            list-style: none;
+        }
+
+        .formation-card li {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+            margin-bottom: 0.5rem;
+        }
+
+        /* ===== ONLINE SECTION ===== */
+        .online-content {
+            max-width: 42rem;
+            margin: 0 auto;
+        }
+
+        .online-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .online-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            flex-shrink: 0;
+            margin-top: 0.25rem;
+        }
+
+        .online-text h3 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .online-text p {
+            color: var(--muted-foreground);
+            margin: 0;
+        }
+
+        /* ===== WARNING BOX ===== */
+        .warning-box {
+            background-color: rgba(143, 163, 184, 0.1);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--accent);
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .warning-box p {
+            color: var(--foreground);
+            margin: 0;
+        }
+
+        .warning-box strong {
+            font-weight: 600;
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.125rem;
+            color: var(--muted-foreground);
+            margin-bottom: 2rem;
+            max-width: 42rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: rgba(232, 220, 200, 0.1);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding-top: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-content { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        .footer-section h3 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+            margin: 0;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--primary);
+            transition: opacity 0.3s;
+        }
+
+        .footer-section a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+        }
+
+        /* ===== UTILITIES ===== */
+        .text-center { text-align: center; }
+        .text-muted { color: var(--muted-foreground); }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-8 { margin-bottom: 2rem; }
+        .mt-4 { margin-top: 1rem; }
+        .mt-8 { margin-top: 2rem; }
+        .mt-12 { margin-top: 3rem; }
+        .space-y-2 > * + * { margin-top: 0.5rem; }
+        .space-y-4 > * + * { margin-top: 1rem; }
+        .space-y-6 > * + * { margin-top: 1.5rem; }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="header-title">
+                    <span class="heart-icon">❤️</span>
+                    <span>Mente e Corpo em Harmonia</span>
+                </div>
+                <p class="header-subtitle">Terapia Holística Online</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+        <!-- HERO SECTION -->
+        <section>
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-text space-y-6">
+                        <div class="space-y-4">
+                            <h1 class="hero-title">Você não precisa carregar isso sozinho(a).</h1>
+                            <p class="hero-subtitle">Aqui você é ouvido(a).</p>
+                        </div>
+                        <p style="font-size: 1.125rem; color: var(--muted-foreground); line-height: 1.8;">
+                            Se você sente ansiedade, não pertencimento, sobrecarga emocional ou a sensação de que ninguém realmente ouve o que você tem a dizer, você encontrou um espaço seguro.
+                        </p>
+                        <p style="font-size: 1rem; color: var(--foreground); line-height: 1.8;">
+                            Aqui não há julgamentos, rótulos ou pressões. Apenas acolhimento genuíno e transformação emocional.
+                        </p>
+                        <div class="mt-4">
+                            <a href="https://wa.link/0zku4o" target="_blank" rel="noopener noreferrer">
+                                <button class="btn-cta btn-full">Quero ser ouvido(a) agora</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <img src="/assets/images/hero-therapy-calm.png" alt="Espaço terapêutico acolhedor" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- IDENTIFICATION SECTION -->
+        <section class="bg-secondary">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Você se sente assim?</h2>
+                    <p class="section-subtitle">Você não está sozinho(a). Muitas pessoas sentem o mesmo.</p>
+                </div>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">⚡</div>
+                        <h3 class="card-title">Ansiedade Constante</h3>
+                        <p class="card-text">Aquele nó no peito, a mente acelerada, a sensação de que algo ruim vai acontecer.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">👥</div>
+                        <h3 class="card-title">Sensação de Exclusão</h3>
+                        <p class="card-text">Dificuldade em se conectar com outras pessoas, sentir-se diferente ou não pertencente.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">👂</div>
+                        <h3 class="card-title">Não Ser Ouvido(a)</h3>
+                        <p class="card-text">Falar e sentir que ninguém realmente entende ou se importa com o que você tem a dizer.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🛡️</div>
+                        <h3 class="card-title">Sobrecarga Emocional</h3>
+                        <p class="card-text">Carregar emoções pesadas sozinho(a), sem espaço seguro para expressar o que sente.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS -->
+        <section>
+            <div class="container">
+                <div class="section-title">
+                    <h2>Como funciona o atendimento</h2>
+                    <p class="section-subtitle">Simples, prático e totalmente online</p>
+                </div>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Você entra em contato</h3>
+                        <p class="step-text">Envie uma mensagem pelo WhatsApp. Sem compromisso, sem pressa.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">Agendamos Juntos</h3>
+                        <p class="step-text">Vamos entender as suas necessidades, escolher o melhor dia e horário que se adequa à sua rotina. Flexibilidade Total.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">Confirmamos o Pagamento</h3>
+                        <p class="step-text">Após ajustarmos todas as necessidades será enviado link de pagamento ou pix.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h3 class="step-title">Atendimento Online</h3>
+                        <p class="step-text">Você recebe o link da sessão. Conecte-se no horário combinado, no conforto do seu espaço.</p>
+                    </div>
+                </div>
+                <div class="text-center mt-12">
+                    <a href="https://wa.link/0zku4o" target="_blank" rel="noopener noreferrer">
+                        <button class="btn-cta">Falar com o terapeuta</button>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- APPROACHES SECTION -->
+        <section class="bg-secondary" id="abordagens">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Abordagens utilizadas</h2>
+                    <p class="section-subtitle">Técnicas comprovadas e humanizadas</p>
+                </div>
+                <div class="approaches-grid">
+                    <div class="approach-card">
+                        <h3>Reiki</h3>
+                        <p>Canalização de energia para equilíbrio emocional e bem-estar. Linhas Mikao Usui e Tibetano.</p>
+                    </div>
+                    <div class="approach-card">
+                        <h3>Programação Neurolinguística (PNL)</h3>
+                        <p>Reprogramação de padrões mentais que geram ansiedade e limitações emocionais.</p>
+                    </div>
+                    <div class="approach-card">
+                        <h3>Constelação Familiar Sistêmica</h3>
+                        <p>Resolução de conflitos emocionais e padrões familiares que impactam sua vida.</p>
+                    </div>
+                    <div class="approach-card">
+                        <h3>Homeopatia</h3>
+                        <p>Tratamento natural que estimula a capacidade de autocura do corpo e mente.</p>
+                    </div>
+                    <div class="approach-card">
+                        <h3>Mentoria para Adolescentes</h3>
+                        <p>Acolhimento especializado para jovens em transição e desenvolvimento emocional.</p>
+                    </div>
+                    <div class="approach-card">
+                        <h3>Mentoria de Vida</h3>
+                        <p>Orientação para clareza de propósito, decisões importantes e transformação pessoal.</p>
+                    </div>
+                </div>
+                <div class="warning-box">
+                    <p><strong>Importante:</strong> Estas abordagens são complementares e não substituem acompanhamento médico quando necessário. Se você está em crise ou precisa de intervenção médica urgente, procure um profissional de saúde.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="sobre">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Sobre Raphael Tomagnini</h2>
+                    <p class="section-subtitle">Profissional qualificado e dedicado ao seu bem-estar</p>
+                </div>
+                <div class="about-content">
+                    <div class="about-seal">
+                        <img src="/assets/images/selo-abrath.png" alt="Selo Terapeuta Credenciado ABRATH" />
+                    </div>
+                    <p class="about-text">
+                        Raphael é terapeuta holístico e acredita que ser ouvido(a), sem julgamentos, é um passo essencial para qualquer processo de transformação emocional. Seu trabalho é criar um espaço seguro, onde sentimentos podem ser acolhidos com respeito, presença e confidencialidade.
+                    </p>
+                    <p class="about-text">
+                        O atendimento é realizado de forma online, permitindo que cada pessoa escolha o melhor momento para falar, no seu tempo e dentro da sua disponibilidade. Nesse ambiente, torna-se possível compreender melhor a ansiedade, a sensação de exclusão e a sobrecarga emocional, favorecendo um caminho de equilíbrio construído com autonomia e cuidado.
+                    </p>
+                    <div class="formations-grid">
+                        <div class="formation-card">
+                            <h3>📚 Formações Principais</h3>
+                            <ul>
+                                <li>✓ Reiki Master (Linhas Mikao Usui e Tibetano)</li>
+                                <li>✓ Practitioner em PNL</li>
+                                <li>✓ Constelação Familiar Sistêmica</li>
+                                <li>✓ Terapeuta Homeopata</li>
+                            </ul>
+                        </div>
+                        <div class="formation-card">
+                            <h3>❤️ Especializações</h3>
+                            <ul>
+                                <li>✓ Mentoria para Adolescentes</li>
+                                <li>✓ Mentoria de Vida (Instituto Holos)</li>
+                                <li>✓ Master Mind - Comunicação Eficaz (Napoleon Hill)</li>
+                                <li>✓ Liderança e Desenvolvimento Pessoal</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="text-center mt-12">
+                        <a href="https://wa.link/0zku4o" target="_blank" rel="noopener noreferrer">
+                            <button class="btn-cta">Agendar atendimento online</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ONLINE SECTION -->
+        <section class="bg-secondary">
+            <div class="container">
+                <h2 class="text-center mb-8">100% Online. 100% Seguro. 100% Seu.</h2>
+                <div class="online-content">
+                    <div class="online-item">
+                        <div class="online-icon">🔒</div>
+                        <div class="online-text">
+                            <h3>Privacidade Total</h3>
+                            <p>Atendimento no conforto do seu espaço, sem exposição ou constrangimento. Seus dados e histórico são confidenciais.</p>
+                        </div>
+                    </div>
+                    <div class="online-item">
+                        <div class="online-icon">⚡</div>
+                        <div class="online-text">
+                            <h3>Praticidade</h3>
+                            <p>Sem deslocamento, sem perda de tempo. Você escolhe o horário que melhor se adequa à sua rotina.</p>
+                        </div>
+                    </div>
+                    <div class="online-item">
+                        <div class="online-icon">❤️</div>
+                        <div class="online-text">
+                            <h3>Acolhimento Genuíno</h3>
+                            <p>Conexão humana real, sem pressa. Você é ouvido(a) com empatia, sem julgamentos ou pressões.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-12">
+                    <a href="https://wa.link/0zku4o" target="_blank" rel="noopener noreferrer">
+                        <button class="btn-cta">Quero começar agora</button>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA FINAL -->
+        <section class="bg-accent-light">
+            <div class="container">
+                <div class="cta-section">
+                    <h2>Seu primeiro passo para transformação</h2>
+                    <p>Não é necessário ter tudo resolvido para começar. Apenas a disposição de se ouvir e se acolher. Estou aqui para ajudar.</p>
+                    <a href="https://wa.link/0zku4o" target="_blank" rel="noopener noreferrer">
+                        <button class="btn-cta" style="font-size: 1.125rem;">Falar com o terapeuta via WhatsApp</button>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Raphael Tomagnini</h3>
+                    <p>Terapeuta Holístico especializado em acolhimento emocional e transformação pessoal. Atendimento 100% online.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p class="mb-4">Envie uma mensagem pelo WhatsApp e vamos conversar.</p>
+                    <a href="https://wa.link/0zku4o" target="_blank" rel="noopener noreferrer">
+                        <button class="btn-cta" style="font-size: 0.875rem;">Enviar mensagem</button>
+                    </a>
+                </div>
+                <div class="footer-section">
+                    <h3>Documentos</h3>
+                    <ul>
+                        <li><a href="termos-de-uso.html">Termos de Uso</a></li>
+                        <li><a href="politica-de-privacidade.html">Política de Privacidade</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Raphael Tomagnini - Terapia Holística Online</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
