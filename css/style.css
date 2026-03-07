@@ -541,4 +541,19 @@ footer {
         padding: 2rem 0;
         margin-bottom: 2rem;
     }
+    /* ===== BLOG CARDS IMAGE FIX ===== */
+
+.blog-card-image{
+    width:100%;
+    height:205px;
+    overflow:hidden;
+    display:block;
 }
+
+.blog-card-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
