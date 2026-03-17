@@ -261,7 +261,7 @@ section {
 .blog-card p {
     color: var(--muted-foreground);
     font-size: 0.95rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     flex: 1;
 }
 
